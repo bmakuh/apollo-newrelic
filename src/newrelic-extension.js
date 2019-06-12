@@ -3,25 +3,33 @@ const { GraphQLExtension } = require('graphql-extensions')
 const newrelic = require('newrelic')
 const fieldTraceSummary = require('./field-trace-summary')
 
-const errorCount = R.pipe(R.propOr([], 'errors'), R.length)
+const errorCount = R.pipe(
+  R.propOr([], 'errors'),
+  R.length,
+)
 
 class NewRelicExtension extends GraphQLExtension {
-  requestDidStart ({
+  requestDidStart({
     queryString,
     operationName,
     variables,
-    persistedQueryHit
+    persistedQueryHit,
   }) {
-    newrelic.setTransactionName(`graphql (${operationName})`)
+    const { groups } = queryString.match(
+      /(\{\n?\s+?)(?<operationName>[a-z]+)(\(.*)/i,
+    )
+    newrelic.setTransactionName(
+      `graphql (${operationName || groups.operationName + '(...'})`,
+    )
     newrelic.addCustomAttribute('gqlQuery', queryString)
     newrelic.addCustomAttribute('gqlVars', JSON.stringify(variables))
     newrelic.addCustomAttribute('persistedQueryHit', persistedQueryHit)
   }
 
-  willSendResponse ({ graphqlResponse }) {
+  willSendResponse({ graphqlResponse }) {
     const tracingSummary = R.pipe(
       R.pathOr([], ['extensions', 'tracing']),
-      fieldTraceSummary
+      fieldTraceSummary,
     )(graphqlResponse)
     newrelic.addCustomAttribute('traceSummary', tracingSummary)
     newrelic.addCustomAttribute('errorCount', errorCount(graphqlResponse))
