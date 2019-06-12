@@ -19,7 +19,7 @@ class NewRelicExtension extends GraphQLExtension {
       /(\{\n?\s+?)(?<operationName>[a-z]+)(\(.*)/i,
     )
     newrelic.setTransactionName(
-      operationName ? `${operationName}` : groups.operationName + '(...)',
+      `graphql [${operationName || groups.operationName + '(...)'}]`,
     )
     newrelic.addCustomAttribute('gqlQuery', queryString)
     newrelic.addCustomAttribute('gqlVars', JSON.stringify(variables))
