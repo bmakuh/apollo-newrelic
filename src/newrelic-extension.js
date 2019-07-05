@@ -15,12 +15,10 @@ class NewRelicExtension extends GraphQLExtension {
     variables,
     persistedQueryHit,
   }) {
-    const operationMatch = queryString.match(
-      /(\{\n?\s+?)(?<operationName>[a-z]+)(\(.*)/i,
-    )
+    const operationMatch = queryString.match(/(\{\n?\s+?)([a-z]+)(\(.*)/i)
     const transactionName =
       operationName ||
-      R.pathOr('', ['groups', 'operationName'], operationMatch) + '(...)'
+      (!!operationName ? operationName[1] || '') + '(...)'
     newrelic.setTransactionName(`graphql(${transactionName})`)
     newrelic.addCustomAttribute('gqlQuery', queryString)
     newrelic.addCustomAttribute('gqlVars', JSON.stringify(variables))
