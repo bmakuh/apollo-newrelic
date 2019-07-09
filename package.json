@@ -1,5 +1,5 @@
 {
-  "name": "@ben.makuh/apollo-newrelic-extension",
+  "name": "apollo-newrelic-extension",
   "version": "0.1.0",
   "description": "Apollo Server extension library for performing NewRelic transaction traces of graphql requests",
   "main": "src/index.js",
