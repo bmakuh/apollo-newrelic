@@ -6,7 +6,8 @@
   "author": "BJ Neilsen",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "yarn test"
   },
   "dependencies": {
     "graphql": "^0.13.2",
