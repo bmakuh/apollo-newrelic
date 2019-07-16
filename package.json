@@ -1,10 +1,14 @@
 {
-  "name": "apollo-newrelic-extension",
-  "version": "0.1.0",
+  "name": "apollo-newrelic-extension-2",
+  "version": "0.2.0",
   "description": "Apollo Server extension library for performing NewRelic transaction traces of graphql requests",
   "main": "src/index.js",
   "author": "BJ Neilsen",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "yarn test"
+  },
   "dependencies": {
     "graphql": "^0.13.2",
     "graphql-extensions": "^0.1.2",
@@ -14,7 +18,8 @@
     "newrelic": "^4.8.0"
   },
   "devDependencies": {
-    "jest": "^23.5.0",
+    "newrelic": "^4.8.0",
+    "jest": "^24.8.0",
     "prettier-standard": "^8.0.1"
   }
 }
