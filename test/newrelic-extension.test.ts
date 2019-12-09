@@ -1,10 +1,9 @@
-// @ts-check
 /* eslint-env jest */
 
-const NewRelicExtension = require('../src/newrelic-extension')
-const newrelic = require('newrelic')
-const mockTraceSummary = `Total Duration (ms): 300`
-jest.mock('../src/field-trace-summary', () => () => mockTraceSummary)
+import newrelic from 'newrelic'
+import NewRelicExtension from '../src/newrelic-extension'
+import tracingData from './tracing.data'
+jest.mock('newrelic')
 
 describe('NewRelicExtension', () => {
   describe('requestDidStart', () => {
@@ -19,6 +18,7 @@ describe('NewRelicExtension', () => {
       const persistedQueryHit = false
 
       const extension = new NewRelicExtension()
+      // @ts-ignore
       extension.requestDidStart({
         queryString,
         operationName,
@@ -29,21 +29,10 @@ describe('NewRelicExtension', () => {
       expect(newrelic.setTransactionName).toHaveBeenCalledWith(
         'graphql(TestQuery)',
       )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        1,
-        'gqlQuery',
-        queryString,
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        2,
-        'gqlVars',
-        JSON.stringify(variables),
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        3,
-        'persistedQueryHit',
-        persistedQueryHit,
-      )
+      expect(newrelic.addCustomAttributes).toHaveBeenCalledWith({
+        gqlQuery: queryString,
+        persistedQueryHit: persistedQueryHit,
+      })
     })
 
     it('handles a null operationName', () => {
@@ -56,6 +45,7 @@ describe('NewRelicExtension', () => {
       const persistedQueryHit = false
 
       const extension = new NewRelicExtension()
+      // @ts-ignore
       extension.requestDidStart({
         queryString,
         operationName,
@@ -66,21 +56,10 @@ describe('NewRelicExtension', () => {
       expect(newrelic.setTransactionName).toHaveBeenCalledWith(
         'graphql(testQuery(...))',
       )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        1,
-        'gqlQuery',
-        queryString,
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        2,
-        'gqlVars',
-        JSON.stringify(variables),
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        3,
-        'persistedQueryHit',
-        persistedQueryHit,
-      )
+      expect(newrelic.addCustomAttributes).toHaveBeenCalledWith({
+        gqlQuery: queryString,
+        persistedQueryHit: persistedQueryHit,
+      })
     })
 
     it('handles an empty query string', () => {
@@ -93,6 +72,7 @@ describe('NewRelicExtension', () => {
       const persistedQueryHit = false
 
       const extension = new NewRelicExtension()
+      // @ts-ignore
       extension.requestDidStart({
         queryString,
         operationName,
@@ -101,47 +81,32 @@ describe('NewRelicExtension', () => {
       })
 
       expect(newrelic.setTransactionName).toHaveBeenCalledWith('graphql()')
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        1,
-        'gqlQuery',
-        queryString,
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        2,
-        'gqlVars',
-        JSON.stringify(variables),
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        3,
-        'persistedQueryHit',
-        persistedQueryHit,
-      )
+      expect(newrelic.addCustomAttributes).toHaveBeenCalledWith({
+        gqlQuery: queryString,
+        persistedQueryHit: persistedQueryHit,
+      })
     })
   })
 
   describe('willSendResponse', () => {
     it('instruments a trace summary and error count before sending the response to the client', () => {
-      newrelic.addCustomAttribute = jest.fn()
+      const mockTraceSummary =
+        'Total Duration (ms): 75.524603 | { character: Character - Duration (ms): 62.99127 } | { character: CharacterConnection - Duration (ms): 63.826914 }'
+      newrelic.addCustomAttributes = jest.fn()
 
       const graphqlResponse = {
-        extensions: {
-          tracing: [],
-        },
+        extensions: tracingData,
       }
 
       const extension = new NewRelicExtension()
+      // @ts-ignore
       extension.willSendResponse({ graphqlResponse })
 
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        1,
-        'traceSummary',
-        mockTraceSummary,
-      )
-      expect(newrelic.addCustomAttribute).toHaveBeenNthCalledWith(
-        2,
-        'errorCount',
-        0,
-      )
+      expect(newrelic.addCustomAttributes).toHaveBeenCalledWith({
+        'Total Duration (ms)': '75.524603',
+        'Field `character: Character` Duration (ms)': '62.99127',
+        'Field `character: CharacterConnection` Duration (ms)': '63.826914',
+      })
     })
   })
 })

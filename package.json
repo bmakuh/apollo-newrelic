@@ -7,19 +7,34 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "prepublishOnly": "yarn test"
+    "prepublishOnly": "yarn test && yarn build",
+    "build": "tsc"
   },
   "dependencies": {
-    "graphql": "^0.13.2",
-    "graphql-extensions": "^0.1.2",
+    "graphql": "^14.5.8",
+    "graphql-extensions": "^0.10.7",
+    "graphql-fields": "2.0.3",
     "ramda": "^0.25.0"
   },
   "peerDependencies": {
-    "newrelic": "^4.8.0"
+    "newrelic": "^4.8.0 || 5.x.x"
   },
   "devDependencies": {
-    "newrelic": "^4.8.0",
-    "jest": "^24.8.0",
-    "prettier-standard": "^8.0.1"
+    "@babel/core": "7.7.5",
+    "@babel/plugin-proposal-class-properties": "7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "7.7.5",
+    "@babel/preset-env": "7.7.6",
+    "@babel/preset-typescript": "7.7.4",
+    "@types/graphql-fields": "1.3.2",
+    "@types/jest": "24.0.23",
+    "@types/newrelic": "^5.11.2",
+    "@types/node": "^11.13.8",
+    "@types/ramda": "0.26.38",
+    "babel-jest": "24.9.0",
+    "jest": "^24.9.0",
+    "newrelic": "^5.13.1",
+    "prettier": "1.19.1",
+    "typescript": "3.7.3"
   }
 }
