@@ -6,7 +6,7 @@
   "files": [
     "dist/"
   ],
-  "author": "BJ Neilsen",
+  "author": "Ben Makuh",
   "license": "MIT",
   "scripts": {
     "test": "jest",
@@ -15,12 +15,10 @@
   },
   "dependencies": {
     "graphql": "^14.5.8",
-    "graphql-extensions": "^0.10.7",
-    "graphql-fields": "2.0.3",
-    "ramda": "^0.25.0"
+    "graphql-extensions": "^0.10.7"
   },
   "peerDependencies": {
-    "newrelic": "^4.8.0 || 5.x.x"
+    "newrelic": "^4.8.0 || 5.x.x || 6.x.x"
   },
   "devDependencies": {
     "@babel/core": "7.7.5",
@@ -29,14 +27,12 @@
     "@babel/plugin-proposal-optional-chaining": "7.7.5",
     "@babel/preset-env": "7.7.6",
     "@babel/preset-typescript": "7.7.4",
-    "@types/graphql-fields": "1.3.2",
     "@types/jest": "24.0.23",
     "@types/newrelic": "^5.11.2",
     "@types/node": "^11.13.8",
-    "@types/ramda": "0.26.38",
     "babel-jest": "24.9.0",
     "jest": "^24.9.0",
-    "newrelic": "^5.13.1",
+    "newrelic": "^6.2.0",
     "prettier": "1.19.1",
     "typescript": "3.7.3"
   }

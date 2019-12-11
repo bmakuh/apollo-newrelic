@@ -1,7 +1,9 @@
 /* eslint-env jest */
 
 import newrelic from 'newrelic'
-import NewRelicExtension from '../src/newrelic-extension'
+import ApolloNewRelic, {
+  markResolversAsTransactions,
+} from '../src/newrelic-extension'
 import tracingData from './tracing.data'
 jest.mock('newrelic')
 
@@ -17,7 +19,7 @@ describe('NewRelicExtension', () => {
       const variables = { foo: 'bar' }
       const persistedQueryHit = false
 
-      const extension = new NewRelicExtension()
+      const extension = new ApolloNewRelic()
       // @ts-ignore
       extension.requestDidStart({
         queryString,
@@ -44,7 +46,7 @@ describe('NewRelicExtension', () => {
       const variables = { foo: 'bar' }
       const persistedQueryHit = false
 
-      const extension = new NewRelicExtension()
+      const extension = new ApolloNewRelic()
       // @ts-ignore
       extension.requestDidStart({
         queryString,
@@ -71,7 +73,7 @@ describe('NewRelicExtension', () => {
       const variables = { foo: 'bar' }
       const persistedQueryHit = false
 
-      const extension = new NewRelicExtension()
+      const extension = new ApolloNewRelic()
       // @ts-ignore
       extension.requestDidStart({
         queryString,
@@ -98,7 +100,7 @@ describe('NewRelicExtension', () => {
         extensions: tracingData,
       }
 
-      const extension = new NewRelicExtension()
+      const extension = new ApolloNewRelic()
       // @ts-ignore
       extension.willSendResponse({ graphqlResponse })
 
@@ -108,5 +110,38 @@ describe('NewRelicExtension', () => {
         'Field `character: CharacterConnection` Duration (ms)': '63.826914',
       })
     })
+  })
+})
+
+describe('markResolversAsTransactions', () => {
+  it('wraps each resolver with a newrelic transaction', () => {
+    // @ts-ignore
+    newrelic.startWebTransaction = jest.fn((url: string, handle: any) => {
+      handle()
+    })
+    newrelic.setTransactionName = jest.fn()
+
+    const resolvers = {
+      Query: {
+        foo: x => console.log(x),
+      },
+      Mutation: {
+        createFoo: x => console.log(x),
+      },
+    }
+
+    const wrappedResolvers = markResolversAsTransactions(resolvers)
+
+    wrappedResolvers.Query.foo('foo bar')
+
+    expect(newrelic.startWebTransaction).toHaveBeenCalled()
+    expect(newrelic.setTransactionName).toHaveBeenCalledWith('Query: foo')
+
+    wrappedResolvers.Mutation.createFoo('foo bar')
+
+    expect(newrelic.startWebTransaction).toHaveBeenCalledTimes(2)
+    expect(newrelic.setTransactionName).toHaveBeenCalledWith(
+      'Mutation: createFoo',
+    )
   })
 })

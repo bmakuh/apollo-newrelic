@@ -1,3 +1,4 @@
-import extension from './newrelic-extension'
+import ApolloNewRelic from './newrelic-extension'
 
-export default extension
+export { markResolversAsTransactions } from './newrelic-extension'
+export default ApolloNewRelic

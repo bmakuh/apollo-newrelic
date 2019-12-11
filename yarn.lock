@@ -1039,25 +1039,30 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@newrelic/koa@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@newrelic/koa/-/koa-1.0.8.tgz#59bf54e86cef700427e32dbdc7c931a213146ac1"
-  integrity sha512-kY//FlLQkGdUIKEeGJlyY3dJRU63EG77YIa48ACMGZxQbWRd3WZMikyft33f8XScTq6WpCDo9xa0viNo8zeYkg==
+"@newrelic/aws-sdk@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@newrelic/aws-sdk/-/aws-sdk-1.0.0.tgz#9e109ba5f1d2fc96ce0547c18ee67216a13a633c"
+  integrity sha512-7stfRvWPQrNdVlrYgJX9hNZ3HMzTGVa5rxJVz5SJuNSi7ngUFGAmImKIbzyGnx3EzSMUsFLemHNcDradfn992w==
+
+"@newrelic/koa@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/@newrelic/koa/-/koa-3.0.0.tgz#048f636c6c06ab4e823674a2ed3d67677a22ed50"
+  integrity sha512-SxfcMqSxiKa3pi7dRmVoCXnh/VLc196GmwyGU2Fr5+vMxS5jPVj2a15v1mn2DGu04XngfXDvyt9Xa6u1JVRDpQ==
   dependencies:
     methods "^1.1.2"
 
-"@newrelic/native-metrics@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/@newrelic/native-metrics/-/native-metrics-4.1.0.tgz#cb1641e55179cd6ec058441ae0b0eedfa36ee0eb"
-  integrity sha512-7CZlKMLuaYQW7mV9qVyo9b9HVe2xBnyn+kkETRJoZGs5P7gdfv9AAE3RPhtOBUopTfbmc8ju7njYadjui9J1XA==
+"@newrelic/native-metrics@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/@newrelic/native-metrics/-/native-metrics-5.0.0.tgz#d31344e4fabf82e7187552dce1b1335ad097c01d"
+  integrity sha512-6Smx/9MlsZTcbLe+Co39O9kJ3sYo/3xunNTOhTP+nPlLxQmQBPDT0/ULmEogTkhaEX5MuCx6L4cN+1QU4uZdDw==
   dependencies:
-    nan "^2.12.1"
+    nan "^2.14.0"
     semver "^5.5.1"
 
-"@newrelic/superagent@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@newrelic/superagent/-/superagent-1.0.3.tgz#8c6ea84f8b463275c58e740204bf2939c2e2a649"
-  integrity sha512-lJbsqKa79qPLbHZsbiRaXl1jfzaXAN7zqqnLRqBY+zI/O5zcfyNngTmdi+9y+qIUq7xHYNaLsAxCXerrsoINKg==
+"@newrelic/superagent@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/@newrelic/superagent/-/superagent-2.0.0.tgz#48279c1ff8a720006202a2ca76c38c6de1c5e650"
+  integrity sha512-FrQfMhbv/HFB60wAQixbSjMk8hT+vS5ms6XJ9J40b9z6YI6x4/wgOc13GbvXbztcfOKCTeGVVDbBCruuh9udRA==
   dependencies:
     methods "^1.1.2"
 
@@ -1147,13 +1152,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/graphql-fields@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.npmjs.org/@types/graphql-fields/-/graphql-fields-1.3.2.tgz#a71c70112db93333ef04c210ee755a216f217799"
-  integrity sha512-f8GVo030fc4RVPB4f7x7YHdaVhgAhucrjvO6jSOOoBonwSGKW/OeVQ3zWCxBRMyoAedEmmUrEpbXuD2eb0UlIg==
-  dependencies:
-    graphql "^14.5.3"
-
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.npmjs.org/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -1200,13 +1198,6 @@
   version "11.15.3"
   resolved "https://registry.npmjs.org/@types/node/-/node-11.15.3.tgz#cb7f19846a83ac5a88fc22756b74633cdeb476a7"
   integrity sha512-5RzvXVietaB8S4dwDjxjltAOHtTO87fiksjqjWGZih97j6KSrdCDaRfmYMNrgrLM87odGBrsTHAl6N3fLraQaw==
-
-"@types/ramda@0.26.38":
-  version "0.26.38"
-  resolved "https://registry.npmjs.org/@types/ramda/-/ramda-0.26.38.tgz#9d19bb910bb15fc9a213402092e160cbbb5acc9b"
-  integrity sha512-legQx15y72vedr5fkVTb5xZaI/OXMzJgZYbMxVL5r269sOg7fZIeitEOumcevMPOMZdqH4cMoL35VuU13TLvVA==
-  dependencies:
-    ts-toolbelt "^4.12.0"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -2181,12 +2172,7 @@ graphql-extensions@^0.10.7:
     apollo-server-env "^2.4.3"
     apollo-server-types "^0.2.8"
 
-graphql-fields@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/graphql-fields/-/graphql-fields-2.0.3.tgz#5e68dff7afbb202be4f4f40623e983b22c96ab8f"
-  integrity sha512-x3VE5lUcR4XCOxPIqaO4CE+bTK8u6gVouOdpQX9+EKHr+scqtK5Pp/l8nIGqIpN1TUlkKE6jDCCycm/WtLRAwA==
-
-graphql@^14.5.3, graphql@^14.5.8:
+graphql@^14.5.8:
   version "14.5.8"
   resolved "https://registry.npmjs.org/graphql/-/graphql-14.5.8.tgz#504f3d3114cb9a0a3f359bbbcf38d9e5bf6a6b3c"
   integrity sha512-MMwmi0zlVLQKLdGiMfWkgQD7dY/TUKt4L+zgJ/aR0Howebod3aNgP5JkgvAULiR2HPVZaP2VEElqtdidHweLkg==
@@ -3219,7 +3205,7 @@ ms@^2.1.1:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-nan@^2.12.1:
+nan@^2.12.1, nan@^2.14.0:
   version "2.14.0"
   resolved "https://registry.npmjs.org/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
@@ -3257,13 +3243,14 @@ neo-async@^2.6.0:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-newrelic@^5.13.1:
-  version "5.13.1"
-  resolved "https://registry.npmjs.org/newrelic/-/newrelic-5.13.1.tgz#ecbe0e54766bd3d197992fe53cc309f34651f17a"
-  integrity sha512-FRChTKLh29benj2r//8/q+nLX3oHYlaOkOAjCVkilbTpp8OwR84FFDZNWRVuocxWP+yPR6ayfPaNc0ueLp9R7g==
+newrelic@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/newrelic/-/newrelic-6.2.0.tgz#7350cb470721bc9f41b98eebe55b6c4cc682c01a"
+  integrity sha512-xzWuZJPIMaPVHITuyUhb6uX+dRjBbs4RsyG0ia7UesKVUORbwX2lyJ6XqiqSQhIw2HnhpAuIBjKmHuR2Rw40WA==
   dependencies:
-    "@newrelic/koa" "^1.0.8"
-    "@newrelic/superagent" "^1.0.2"
+    "@newrelic/aws-sdk" "^1.0.0"
+    "@newrelic/koa" "^3.0.0"
+    "@newrelic/superagent" "^2.0.0"
     "@tyriar/fibonacci-heap" "^2.0.7"
     async "^2.1.4"
     concat-stream "^2.0.0"
@@ -3274,7 +3261,7 @@ newrelic@^5.13.1:
     readable-stream "^3.1.1"
     semver "^5.3.0"
   optionalDependencies:
-    "@newrelic/native-metrics" "^4.0.0"
+    "@newrelic/native-metrics" "^5.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -3649,10 +3636,6 @@ punycode@^2.1.0:
 qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-
-ramda@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
 
 rc@^1.2.7:
   version "1.2.8"
@@ -4262,11 +4245,6 @@ tr46@^1.0.1:
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
-
-ts-toolbelt@^4.12.0:
-  version "4.12.13"
-  resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-4.12.13.tgz#a2fb92f16ef6e5828c16a8f403e1eaf87703160b"
-  integrity sha512-tnMgohN582PAv9u5xX8tsbdTzawRwyhvrg2r1qOgiAUOXB8ABGwYQeOh0qfE43wKF0ygvbBrM/CTZMED6ow5ZQ==
 
 tunnel-agent@^0.6.0:
   version "0.6.0"

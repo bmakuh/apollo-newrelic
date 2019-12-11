@@ -1,42 +1,42 @@
 Arguments: 
-  /Users/bmakuh/.volta/tools/image/node/10.17.0/6.11.3/bin/node /Users/bmakuh/.volta/tools/image/yarn/1.16.0/bin/yarn.js add --dev @babel/proposal-class-properties
+  /usr/local/Cellar/node/11.10.0/bin/node /Users/bmakuh/.yarn/bin/yarn.js publish
 
 PATH: 
-  /Users/bmakuh/.volta/tools/image/node/10.17.0/6.11.3/bin:/Users/bmakuh/.volta/tools/image/yarn/1.16.0/bin:/Users/bmakuh/.yarn/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/bmakuh/working/apollo-newrelic-extension/node_modules/.bin
+  /Users/bmakuh/.yarn/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/bmakuh/.volta/bin:/Users/bmakuh/working/apollo-newrelic-extension/node_modules/.bin:/Users/bmakuh/working/apollo-newrelic-extension/node_modules/.bin
 
 Yarn version: 
-  1.16.0
+  1.19.1
 
 Node version: 
-  10.17.0
+  11.10.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@babel%2fproposal-class-properties: Not found
-      at Request.params.callback [as _callback] (/Users/bmakuh/.volta/tools/image/yarn/1.16.0/lib/cli.js:66091:18)
-      at Request.self.callback (/Users/bmakuh/.volta/tools/image/yarn/1.16.0/lib/cli.js:129590:22)
-      at Request.emit (events.js:198:13)
-      at Request.<anonymous> (/Users/bmakuh/.volta/tools/image/yarn/1.16.0/lib/cli.js:130562:10)
-      at Request.emit (events.js:198:13)
-      at IncomingMessage.<anonymous> (/Users/bmakuh/.volta/tools/image/yarn/1.16.0/lib/cli.js:130484:12)
-      at Object.onceWrapper (events.js:286:20)
-      at IncomingMessage.emit (events.js:203:15)
-      at endReadableNT (_stream_readable.js:1143:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: canceled
+      at Interface.<anonymous> (/Users/bmakuh/.yarn/lib/cli.js:136824:13)
+      at Interface.emit (events.js:197:13)
+      at Interface._ttyWrite (readline.js:799:16)
+      at ReadStream.onkeypress (readline.js:184:10)
+      at ReadStream.emit (events.js:197:13)
+      at emitKeys (internal/readline.js:424:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1071:36)
+      at ReadStream.emit (events.js:197:13)
+      at addChunk (_stream_readable.js:288:12)
 
 npm manifest: 
   {
-    "name": "apollo-newrelic-extension-2",
-    "version": "0.2.0",
+    "name": "apollo-newrelic",
+    "version": "0.3.0-beta.1",
     "description": "Apollo Server extension library for performing NewRelic transaction traces of graphql requests",
     "main": "src/index.js",
     "author": "BJ Neilsen",
     "license": "MIT",
     "scripts": {
       "test": "jest",
-      "prepublishOnly": "yarn test",
+      "prepublishOnly": "yarn test && yarn build",
       "build": "tsc"
     },
     "dependencies": {
@@ -50,6 +50,7 @@ npm manifest:
     },
     "devDependencies": {
       "@babel/core": "7.7.5",
+      "@babel/plugin-proposal-class-properties": "7.7.4",
       "@babel/plugin-proposal-nullish-coalescing-operator": "7.7.4",
       "@babel/plugin-proposal-optional-chaining": "7.7.5",
       "@babel/preset-env": "7.7.6",
@@ -62,6 +63,7 @@ npm manifest:
       "babel-jest": "24.9.0",
       "jest": "^24.9.0",
       "newrelic": "^5.13.1",
+      "prettier": "1.19.1",
       "typescript": "3.7.3"
     }
   }
@@ -418,6 +420,14 @@ Lockfile:
       "@babel/helper-plugin-utils" "^7.0.0"
       "@babel/helper-remap-async-to-generator" "^7.7.4"
       "@babel/plugin-syntax-async-generators" "^7.7.4"
+  
+  "@babel/plugin-proposal-class-properties@7.7.4":
+    version "7.7.4"
+    resolved "https://registry.npmjs.org/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.7.4.tgz#2f964f0cb18b948450362742e33e15211e77c2ba"
+    integrity sha512-EcuXeV4Hv1X3+Q1TsuOmyyxeTRiSqurGJ26+I/FW1WbymmRRapVORm6x1Zl3iDIHyRxEs+VXWp6qnlcfcJSbbw==
+    dependencies:
+      "@babel/helper-create-class-features-plugin" "^7.7.4"
+      "@babel/helper-plugin-utils" "^7.0.0"
   
   "@babel/plugin-proposal-dynamic-import@^7.7.4":
     version "7.7.4"
@@ -3657,6 +3667,11 @@ Lockfile:
   prelude-ls@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
+  
+  prettier@1.19.1:
+    version "1.19.1"
+    resolved "https://registry.npmjs.org/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+    integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
   
   pretty-format@^24.9.0:
     version "24.9.0"
